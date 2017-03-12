@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
-# include BCrypt
+
+  validates :user_name, presence: true
+  validates :email, uniqueness: true
+  validates :password_hash, presence: true
 
   def password
     @password ||= BCrypt::Password.new(password_hash)
