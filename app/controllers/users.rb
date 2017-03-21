@@ -22,6 +22,7 @@ end
 
 # display a specific user
 get '/users/:id' do
+	redirect '/' unless logged_in?
 	@user = User.find_by(id: params[:id])
 	erb :'/users/show'
 end
@@ -30,17 +31,19 @@ end
 
 # return a form for editing a user
 get '/users/:id/edit' do
+	redirect '/' unless logged_in? && current_user.id == params[:user_id]
 	@user = User.find_by(id: params[:id])
 	erb :'/users/edit'
 end
 
-# update a specific user
+# update/edit a specific user
 put '/users/:id' do
 	@user = User.find_by(id: params[:id])
 	@user.assign_attributes(params[:user])
 	if @user.save
-		redirect '/users'
+		redirect '/users/#{@user.id}'
 	else
+		@errors = @user.errors.full_messages
 		erb :'/users/edit'
 	end
 end
@@ -49,4 +52,5 @@ end
 delete '/users/:id' do
 	@user.destroy
 	redirect '/'
+
 end
