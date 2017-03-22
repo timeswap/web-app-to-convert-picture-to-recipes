@@ -3,42 +3,22 @@ get '/sessions/login' do
 end
 
 post '/login' do
-	@user = User.authenticate(params[:user][:email], params[:user][:password])
-	if validation_fail
-		erb :'/sessions/new'
-	elsif @user
-		login
-		redirect "/users/#{@user.id}"
-	end
+  @user = User.find_by(email: params[:user][:email])
+  if @user && @user.password == params[:user][:password]
+  	p "login here"
+		p "*" * 50
+    login
+    redirect "/users/#{@user.id}"
+  else
+    @errors = ['Username or Password Incorrect!']
+    erb :'sessions/new'
+  end
 end
 
 delete '/logout' do
+	p "logout here"
+	p "*" * 50
 	logout
 	redirect '/'
 end
 
-
-# different routes where you don't need login
-
-# login form
-get '/sessions' do
-	erb :'/sessions/new'
-end
-
-# login action
-post '/sessions' do
-	@user = User.find_by(email: params[:email])
-	if @user && @user.password == params[:password]
-		session[:id] = @user.id
-		redirect '/users'
-	else
-		
-	end
-
-end
-
-#logout action
-delete '/sessions' do
-	session[:id] = nil
-	redirect '/'
-end

@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :comments
+  has_many :recipes
+  has_many :votes
 
-  validates :user_name, presence: true
+  validates :username, presence: true
   validates :email, uniqueness: true
   validates :password_hash, presence: true
 
@@ -13,9 +16,9 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  def self.authenticate(email, password)
-  	valid_user = User.find_by(email: email)
-  	valid_user.password == password ? valid_user : nil
-  end
+  # def self.authenticate(email, password)
+  # 	valid_user = User.find_by(email: email)
+  # 	valid_user.password == password ? valid_user : nil
+  # end
 
 end

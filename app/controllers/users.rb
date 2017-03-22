@@ -52,5 +52,4 @@ end
 delete '/users/:id' do
 	@user.destroy
 	redirect '/'
-
 end

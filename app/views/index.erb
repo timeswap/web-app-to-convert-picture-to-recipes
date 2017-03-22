@@ -1,4 +1,9 @@
 <center>
 <div class="container">
-  <h1>Welcome to a Web Site!!!</h1>
+  <h1>Welcome to PicRecipe!</h1>
+  <h3>Pick a tasty picture and get that recipe</h3>
+
+  <% @recipes.each do |recipe| %>
+    <a href="/recipes/<%=recipe.id%>"><img src="<%= recipe.photo_url %>"></a>
+  <% end %>
 </center>
