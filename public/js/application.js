@@ -23,7 +23,11 @@ $(document).ready(function() {
       },
       success: function(data) {
         // for debugging & transversing the data objects
-        // window.imageData = data;
+        window.imageData = data;
+
+        // HOW TO GET RECIPE FROM PHOTO
+        https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=pho&insightsToken=ccid_Lc5gHeyA*mid_C053606D818E66E38D42E655B016D4F3254F6303*simid_608041171484478328&modulesRequested=Recipes
+
         var imgLink = data.value[0].thumbnailUrl;
         var image = $('<img></img>');
         image.attr('src', imgLink);

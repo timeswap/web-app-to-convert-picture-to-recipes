@@ -3,17 +3,19 @@
   <h1>Welcome to PicRecipe!</h1>
   <h3>Pick a tasty picture and get that recipe</h3>
 
-  <% @recipes.each do |recipe| %>
+  <br>
+
+  <img src="/Chow-Mein.jpg"><br>
+  <!-- <img src='https://tse2.mm.bing.net/th?id=OIP.sIVN4ip9finyqhkismSfdwEsDH&pid=Api'> -->
+    <% @recipes.each do |recipe| %>
     <a href="/recipes/<%=recipe.id%>"><img src="<%= recipe.photo_url %>"></a><br>
 
   <% end %>
 
-
-  <img src="/Chow-Mein.jpg">
-  <img src='https://tse2.mm.bing.net/th?id=OIP.sIVN4ip9finyqhkismSfdwEsDH&pid=Api'>
-
+<left>
   <br>
   <main>
+<!-- <div id="output"></div> -->
     <form>
       <input id="searchBox" type="text" type="submit" name="searchBox" required/>
       <button id="searchButton" type="submit">Get Image</button>
@@ -22,7 +24,7 @@
   </main>
   <script src="./js/application.js"></script>
 
-
+</left>
+</div>
 
 </center>
-
