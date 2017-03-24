@@ -4,6 +4,25 @@
   <h3>Pick a tasty picture and get that recipe</h3>
 
   <% @recipes.each do |recipe| %>
-    <a href="/recipes/<%=recipe.id%>"><img src="<%= recipe.photo_url %>"></a>
+    <a href="/recipes/<%=recipe.id%>"><img src="<%= recipe.photo_url %>"></a><br>
+
   <% end %>
+
+
+  <img src="/Chow-Mein.jpg">
+  <img src='https://tse2.mm.bing.net/th?id=OIP.sIVN4ip9finyqhkismSfdwEsDH&pid=Api'>
+
+  <br>
+  <main>
+    <form>
+      <input id="searchBox" type="text" type="submit" name="searchBox" required/>
+      <button id="searchButton" type="submit">Get Image</button>
+    </form>
+    <div id="output"></div>
+  </main>
+  <script src="./js/application.js"></script>
+
+
+
 </center>
+
